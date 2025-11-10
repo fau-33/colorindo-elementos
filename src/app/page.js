@@ -3,10 +3,17 @@ import { useState } from "react";
 import estilos from "./page.module.css";
 
 export default function Home() {
+  const [corAlterada, setCorAlterada] = useState(false);
   const [corDeFundo, setCorDeFundo] = useState(estilos.bg_vermelho);
 
   function alterarEstilo() {
-    setCorDeFundo(estilos.bg_azul);
+    if (corAlterada === true) {
+      setCorAlterada(false);
+      setCorDeFundo(estilos.bg_vermelho);
+    } else {
+      setCorAlterada(true);
+      setCorDeFundo(estilos.bg_azul);
+    }
   }
 
   return (
