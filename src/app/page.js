@@ -3,24 +3,23 @@ import { useState } from "react";
 import estilos from "./page.module.css";
 
 export default function Home() {
+  const corDeFundoVermelho = estilos.bg_vermelho;
+  const corDeFundoAzul = estilos.bg_azul;
+
   const [corAlterada, setCorAlterada] = useState(false);
-  const [corDeFundo, setCorDeFundo] = useState(estilos.bg_vermelho);
+  const [corDeFundo, setCorDeFundo] = useState(corDeFundoVermelho);
 
   function alterarEstilo() {
-    if (corAlterada === true) {
-      setCorAlterada(false);
-      setCorDeFundo(estilos.bg_vermelho);
-    } else {
-      setCorAlterada(true);
-      setCorDeFundo(estilos.bg_azul);
-    }
+    setCorAlterada(!corAlterada);
   }
 
   return (
     <main className={estilos.main}>
       <div className={estilos.container}>
         <h2>Alterando o estilo do elemento</h2>
-        <div className={corDeFundo}></div>
+        <div
+          className={corAlterada ? corDeFundoAzul : corDeFundoVermelho}
+        ></div>
         <p>Clique no botão para alterar o estilo</p>
         <button onClick={alterarEstilo}>Alterar</button>
       </div>
